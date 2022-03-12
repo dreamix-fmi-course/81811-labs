@@ -1,13 +1,16 @@
 package labs.lab1.collections;
 
 import labs.lab1.collections.entity.Dog;
+import labs.lab1.collections.entity.Leg;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Exercise {
     public static void main(String[] args) {
@@ -71,5 +74,23 @@ public class Exercise {
         System.out.println("The number of key-value mappings is: " + count1);
 
         System.out.println("The number of key-value mappings is: " + map.size());
+
+        // T7) Write the following structure against aircraft tail number associate
+        // list of leg information (fromAirport, toAirport, date).
+        // Fill test information
+        // Extract legs inside list/set that have from/to airport for a specific airport
+        // (Example: All legs for airport LBSF)
+
+        List<Leg> legs = List.of(
+            new Leg("Sofia", "Varna", LocalDate.of(2019, 1, 1)),
+            new Leg("New York", "Miami", LocalDate.of(2022, 1, 1)),
+            new Leg("Prague", "Sofia", LocalDate.of(2015, 3, 3)),
+            new Leg("Rome", "Athens", LocalDate.now()));
+
+        List<Leg> sofiaLegs = legs.stream()
+            .filter(leg -> leg.getFromAirport().equals("Sofia") || leg.getToAirport().equals("Sofia"))
+            .collect(Collectors.toList());
+
+        System.out.println(sofiaLegs);
     }
 }
