@@ -1,6 +1,7 @@
 package uni.fmi.week4;
 
 import uni.fmi.week4.task2.exceptions.InvalidTicketException;
+import uni.fmi.week4.task2.logger.Logger;
 import uni.fmi.week4.task2.model.Event;
 import uni.fmi.week4.task2.model.Ticket;
 import uni.fmi.week4.task2.model.User;
@@ -34,6 +35,9 @@ public class Week4Application implements CommandLineRunner {
     @Autowired
     private TicketService ticketService;
 
+    @Autowired
+    private Logger logger;
+
     public static void main(String[] args) {
         SpringApplication.run(Week4Application.class, args);
     }
@@ -49,6 +53,7 @@ public class Week4Application implements CommandLineRunner {
     }
 
     public void ticketDemo() throws InvalidTicketException {
+
         User user1 = new User(1L, "misho", "misho@abv.bg");
         User user2 = new User(2L, "pesho", "pesho@gmail.com");
         User user3 = new User(3L, "mimi", "mimi@abv.bg");
@@ -98,5 +103,7 @@ public class Week4Application implements CommandLineRunner {
         } catch (InvalidTicketException e) {
             System.err.println("Invalid ticket information");
         }
+
+        logger.info("logging");
     }
 }
