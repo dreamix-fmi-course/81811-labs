@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootApplication
-public class Week6Application implements CommandLineRunner {
+public class Week6Application {
     @Autowired
     private UserService userService;
 
@@ -78,7 +78,7 @@ public class Week6Application implements CommandLineRunner {
         ticketService.createTicket(invalidTicket);
     }
 
-    @Override
+    /*@Override
     public void run(String... args) {
         //bookDemo();
 
@@ -89,5 +89,5 @@ public class Week6Application implements CommandLineRunner {
         }
 
         logger.info("logging");
-    }
+    }*/
 }
